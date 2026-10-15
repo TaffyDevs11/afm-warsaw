@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site settings · Admin panel</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#2A2867">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var t = localStorage.getItem('afm-theme');
+    if (t === 'light' || t === 'dark') { d.setAttribute('data-theme', t); }
+  } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=1787772720">
+<link rel="stylesheet" href="../assets/css/base.css?v=1787772748">
+<link rel="stylesheet" href="../assets/css/components.css?v=1790017947">
+<link rel="stylesheet" href="../assets/css/admin.css?v=1790017407">
+</head>
+<body><div style="background:#2A2867;color:#fff;font:500 13px/1.5 Montserrat,system-ui,sans-serif;padding:9px 16px;text-align:center">Admin panel preview — a static snapshot with sample data. Nothing here saves.</div>
+<div class="admin-body">
+
+  <aside class="admin-side">
+    <a class="admin-brand" href="index.html">
+      <img src="../pics/logo.png" alt="">
+      <span>
+        <strong>AFM Warsaw</strong>
+        <span>Admin panel</span>
+      </span>
+    </a>
+
+    <nav class="admin-nav" aria-label="Admin panel">
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+      <span class="admin-nav__label">Word &amp; Sermons</span>
+      <a href="announcements.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M16 8.5a4.5 4.5 0 0 1 0 7"/><path d="M19 5.5a8.5 8.5 0 0 1 0 13"/></svg><span>Announcements</span></a><a href="blog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h9l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 20V5a1.5 1.5 0 0 1 1-1.5Z"/><path d="M14 3.5V9h5"/><path d="M8 13h8M8 17h5"/></svg><span>Blog</span></a><a href="sermons.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z"/></svg><span>Sermons</span></a><a href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span>Gallery</span></a>
+      <span class="admin-nav__label">Get Involved</span>
+      <a href="departments.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5v-2a4 4 0 0 1 4-4h3a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7.5" r="3.2"/><path d="M16.5 20.5v-2a4 4 0 0 0-2.2-3.5"/><path d="M15 4.6a3.2 3.2 0 0 1 0 6"/></svg><span>Departments</span></a><a href="ministries.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10a4.5 4.5 0 0 1 7.5-3.3A4.5 4.5 0 0 1 19.5 11c0 5.4-7.5 10-7.5 10Z"/></svg><span>Ministries</span></a><a href="join-requests.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20.5v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7.5" r="3.2"/><path d="M18 8v6M21 11h-6"/></svg><span>Join requests</span><span class="count">1</span></a><a href="messages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg><span>Messages</span><span class="count">1</span></a>
+      <span class="admin-nav__label">Businesses</span>
+      <a href="businesses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 4.5 4h15L21 9.5"/><path d="M3 9.5a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v8.5h14V12"/><path d="M10 20.5v-5h4v5"/></svg><span>Businesses</span></a>
+      <span class="admin-nav__label">Hall bookings</span>
+      <a href="bookings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hall bookings</span></a>
+      <span class="admin-nav__label">Site settings</span>
+      <a href="settings.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.5 15a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1V4a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.2a2 2 0 1 1 0 4Z"/></svg><span>Site settings</span></a><a href="account.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><span>My account</span></a>    </nav>
+
+    <div class="admin-side__foot">
+      <p style="color:#fff;font-family:var(--font-display);font-size:var(--t-small);margin:0 0 2px">
+        Church Administrator      </p>
+      <p style="color:rgba(255,255,255,.5);margin:0 0 var(--s-2)">
+        admin · owner      </p>
+      <p class="row" style="gap:8px">
+        <a href="../index.html" target="_blank" rel="noopener"
+           style="color:rgba(255,255,255,.8)">View site &nearr;</a>
+      </p>
+      <p style="margin-top:8px">
+        <a href="logout.php" style="color:var(--gold)">Sign out</a>
+      </p>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    
+<div class="admin-head">
+  <div>
+    <span class="eyebrow eyebrow--gold">Admin panel</span>
+    <h1>Site settings</h1>
+    <p>Change any of this without touching code. The public site updates immediately.</p>
+  </div>
+  <button class="btn btn--primary" type="submit" form="settings-form">Save</button>
+</div>
+
+
+<form method="post" enctype="multipart/form-data" id="settings-form" data-dirty-guard>
+  <input type="hidden" name="csrf_token" value="1b8e1a0257f15ceda361d5084d2dee63f383687fbb8b060674e01e240cea68f9">  <input type="hidden" name="form" value="save">
+
+      <div class="panel">
+      <h2>Identity</h2>
+      <div class="form-grid">
+                  <div class="field">
+                          <label for="church_name_en">Church name (English)</label>
+              <input class="input" type="text"
+                     id="church_name_en" name="church_name_en" value="AFM Warsaw Christian Centre">
+            
+                      </div>
+                  <div class="field">
+                          <label for="church_name_pl">Church name (Polski)</label>
+              <input class="input" type="text"
+                     id="church_name_pl" name="church_name_pl" value="AFM Warszawskie Centrum Chrześcijańskie">
+            
+                      </div>
+                  <div class="field">
+                          <label for="church_subtitle_en">Subtitle (English)</label>
+              <input class="input" type="text"
+                     id="church_subtitle_en" name="church_subtitle_en" value="Part of AFM Church in Poland">
+            
+                          <span class="hint">Shown under the logo, e.g. &quot;Part of AFM Church in Poland&quot;.</span>
+                      </div>
+                  <div class="field">
+                          <label for="church_subtitle_pl">Subtitle (Polski)</label>
+              <input class="input" type="text"
+                     id="church_subtitle_pl" name="church_subtitle_pl" value="Część Kościoła AFM w Polsce">
+            
+                      </div>
+                  <div class="field">
+                          <label for="parent_name_en">Parent body (English)</label>
+              <input class="input" type="text"
+                     id="parent_name_en" name="parent_name_en" value="AFM Church in Poland">
+            
+                          <span class="hint">The national church this assembly belongs to.</span>
+                      </div>
+                  <div class="field">
+                          <label for="parent_name_pl">Parent body (Polski)</label>
+              <input class="input" type="text"
+                     id="parent_name_pl" name="parent_name_pl" value="Kościół AFM w Polsce">
+            
+                      </div>
+                  <div class="field">
+                          <label for="parent_url">Parent body website</label>
+              <input class="input" type="url"
+                     id="parent_url" name="parent_url" value="">
+            
+                          <span class="hint">Leave empty until the national site exists; when set, the footer links to it.</span>
+                      </div>
+                  <div class="field field--full">
+                          <label for="tagline_en">Tagline (English)</label>
+              <textarea class="textarea" id="tagline_en" name="tagline_en"
+                        style="min-height:100px">A place to belong, believe and grow in Christ.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="tagline_pl">Tagline (Polski)</label>
+              <textarea class="textarea" id="tagline_pl" name="tagline_pl"
+                        style="min-height:100px">Miejsce, gdzie możesz przynależeć, wierzyć i wzrastać w Chrystusie.</textarea>
+
+            
+                      </div>
+              </div>
+    </div>
+      <div class="panel">
+      <h2>Contact</h2>
+      <div class="form-grid">
+                  <div class="field field--full">
+                          <label for="address_en">Address (English)</label>
+              <textarea class="textarea" id="address_en" name="address_en"
+                        style="min-height:100px">Solec 61
+Warsaw, Poland</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="address_pl">Address (Polski)</label>
+              <textarea class="textarea" id="address_pl" name="address_pl"
+                        style="min-height:100px">Solec 61
+Warszawa, Polska</textarea>
+
+            
+                      </div>
+                  <div class="field">
+                          <label for="phone">Phone</label>
+              <input class="input" type="text"
+                     id="phone" name="phone" value="+48 000 000 000">
+            
+                      </div>
+                  <div class="field">
+                          <label for="email">Email</label>
+              <input class="input" type="text"
+                     id="email" name="email" value="info@afmwarsaw.pl">
+            
+                      </div>
+                  <div class="field">
+                          <label for="map_embed_url">Google Maps embed URL</label>
+              <input class="input" type="url"
+                     id="map_embed_url" name="map_embed_url" value="">
+            
+                          <span class="hint">In Google Maps: Share → Embed a map → copy just the src=&quot;…&quot; URL.</span>
+                      </div>
+              </div>
+    </div>
+      <div class="panel">
+      <h2>Service times</h2>
+      <div class="form-grid">
+                  <div class="field field--full">
+                          <label for="service_times_en">Service times (English)</label>
+              <textarea class="textarea" id="service_times_en" name="service_times_en"
+                        style="min-height:100px">Sunday 11:00 | Worship Service</textarea>
+
+            
+                          <span class="hint">One per line, as &quot;Day HH:MM | Description&quot;.</span>
+                      </div>
+                  <div class="field field--full">
+                          <label for="service_times_pl">Service times (Polski)</label>
+              <textarea class="textarea" id="service_times_pl" name="service_times_pl"
+                        style="min-height:100px">Niedziela 11:00 | Nabożeństwo</textarea>
+
+            
+                          <span class="hint">Jedna na linię: &quot;Dzień HH:MM | Opis&quot;.</span>
+                      </div>
+              </div>
+    </div>
+      <div class="panel">
+      <h2>Social &amp; live</h2>
+      <div class="form-grid">
+                  <div class="field">
+                          <label for="instagram_url">Instagram URL</label>
+              <input class="input" type="url"
+                     id="instagram_url" name="instagram_url" value="https://www.instagram.com/">
+            
+                      </div>
+                  <div class="field">
+                          <label for="facebook_url">Facebook URL</label>
+              <input class="input" type="url"
+                     id="facebook_url" name="facebook_url" value="https://www.facebook.com/">
+            
+                      </div>
+                  <div class="field">
+                          <label for="youtube_url">YouTube URL</label>
+              <input class="input" type="url"
+                     id="youtube_url" name="youtube_url" value="">
+            
+                      </div>
+                  <div class="field field--full">
+                          <label class="checkbox">
+                <input type="checkbox" name="is_live" value="1" >
+                <span>We are live right now</span>
+              </label>
+
+            
+                          <span class="hint">Shows a banner across the whole site and opens up the Live page.</span>
+                      </div>
+                  <div class="field">
+                          <label for="live_embed_url">Live embed URL (YouTube / Facebook)</label>
+              <input class="input" type="url"
+                     id="live_embed_url" name="live_embed_url" value="">
+            
+                          <span class="hint">Optional. If set, the Live page plays the stream inline. Instagram Live cannot be embedded by anyone — leave this empty when streaming to Instagram and visitors get a &quot;Watch on Instagram&quot; button.</span>
+                      </div>
+                  <div class="field field--full">
+                          <label for="live_message_en">Offline message (English)</label>
+              <textarea class="textarea" id="live_message_en" name="live_message_en"
+                        style="min-height:100px">We are not streaming right now. Join us at our next service — or catch up with a recent sermon below.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="live_message_pl">Offline message (Polski)</label>
+              <textarea class="textarea" id="live_message_pl" name="live_message_pl"
+                        style="min-height:100px">Nie transmitujemy w tej chwili. Dołącz do nas na najbliższym nabożeństwie — lub obejrzyj jedno z ostatnich kazań poniżej.</textarea>
+
+            
+                      </div>
+              </div>
+    </div>
+      <div class="panel">
+      <h2>About page</h2>
+      <div class="form-grid">
+                  <div class="field field--full">
+                          <label for="vision_en">Vision (English)</label>
+              <textarea class="textarea" id="vision_en" name="vision_en"
+                        style="min-height:100px">We exist to see lives transformed by the gospel, and a church family where every person finds a place to belong and to serve.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="vision_pl">Vision (Polski)</label>
+              <textarea class="textarea" id="vision_pl" name="vision_pl"
+                        style="min-height:100px">Istniejemy po to, by ludzie doświadczali przemiany przez ewangelię i znajdowali swoje miejsce we wspólnocie.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="mission_en">Mission (English)</label>
+              <textarea class="textarea" id="mission_en" name="mission_en"
+                        style="min-height:100px">To worship God together, grow in the Word, and serve the city of Warsaw with practical love.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="mission_pl">Mission (Polski)</label>
+              <textarea class="textarea" id="mission_pl" name="mission_pl"
+                        style="min-height:100px">Wspólnie uwielbiać Boga, wzrastać w Słowie i służyć Warszawie praktyczną miłością.</textarea>
+
+            
+                      </div>
+              </div>
+    </div>
+      <div class="panel">
+      <h2>Leadership</h2>
+      <div class="form-grid">
+                  <div class="field">
+                          <label for="pastor_name">Pastor name</label>
+              <input class="input" type="text"
+                     id="pastor_name" name="pastor_name" value="Pastor Maka">
+            
+                      </div>
+                  <div class="field">
+                          <label for="pastor_title_en">Pastor title (English)</label>
+              <input class="input" type="text"
+                     id="pastor_title_en" name="pastor_title_en" value="Senior Pastor">
+            
+                      </div>
+                  <div class="field">
+                          <label for="pastor_title_pl">Pastor title (Polski)</label>
+              <input class="input" type="text"
+                     id="pastor_title_pl" name="pastor_title_pl" value="Pastor Senior">
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="pastor_bio_en">Pastor bio (English)</label>
+              <textarea class="textarea" id="pastor_bio_en" name="pastor_bio_en"
+                        style="min-height:100px">Sample biography — the pastor&#039;s own words go here once the church supplies them.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="pastor_bio_pl">Pastor bio (Polski)</label>
+              <textarea class="textarea" id="pastor_bio_pl" name="pastor_bio_pl"
+                        style="min-height:100px">Przykładowa biografia — tekst pastora pojawi się tutaj.</textarea>
+
+            
+                      </div>
+                  <div class="field field--full">
+                          <label for="pastor_photo">Pastor photo</label>
+                              <img class="image-preview"
+                     src="../uploads/thumbs/400/3ce24bc637c2037c550c7636.webp" alt="">
+                            <input class="input" type="file" id="pastor_photo" name="pastor_photo" accept="image/*">
+
+            
+                      </div>
+              </div>
+    </div>
+  
+  <div class="panel">
+    <div class="form-actions" style="border-top:0;margin-top:0;padding-top:0">
+      <button class="btn btn--primary btn--lg" type="submit">Save</button>
+      <a class="btn btn--ghost" href="../index.html" target="_blank" rel="noopener">
+        View site &nearr;
+      </a>
+    </div>
+  </div>
+</form>
+
+  </main>
+</div>
+<script src="../assets/js/admin.js?v=1790017393" defer></script>
+<script>
+document.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target, n = f.querySelector('.demo-note');
+  if (!n) {
+    n = document.createElement('p');
+    n.className = 'demo-note';
+    n.style.cssText = 'margin-top:12px;padding:12px 14px;border-radius:8px;background:#F3EAD8;color:#8E7742;font-size:14px';
+    n.textContent = 'This is a static preview, so the form is not connected. On the real site this submission is saved and appears in the admin panel.';
+    f.appendChild(n);
+  }
+  n.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}, true);
+</script>
+</body>
+</html>

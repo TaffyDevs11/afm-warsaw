@@ -1,0 +1,190 @@
+/* =====================================================================
+   AFM Warsaw — design tokens
+   ---------------------------------------------------------------------
+   Structure follows the supplied reference: matte and flat, no shadows,
+   no gradients, elevation expressed only through chromatic fill, generous
+   border-radius and a single hairline border.
+
+   Colour is entirely the church's own, sampled from pics/logo.png:
+       navy    #2A2867     crimson #D42826     gold #BB9E65
+   ===================================================================== */
+
+:root {
+    /* ---- Surfaces ------------------------------------------------- */
+    --fog:            #F5F4F1;  /* page canvas */
+    --paper:          #FFFFFF;  /* cards, elevated panels */
+    --paper-sunk:     #FAF9F7;  /* insets, table stripes */
+    --mist:           #E4E2ED;  /* 1px hairlines, input borders */
+
+    /* ---- Text ----------------------------------------------------- */
+    --ink:            #141230;  /* primary text — navy undertone, never #000 */
+    --graphite:       #4A4560;  /* secondary text */
+    --graphite-soft:  #6E6885;  /* captions, meta */
+
+    /* ---- Brand ---------------------------------------------------- */
+    --navy:           #2A2867;
+    --navy-deep:      #1B1A45;
+    --navy-soft:      #E6E6F2;
+    --gold:           #BB9E65;
+    --gold-deep:      #8E7742;
+    --gold-soft:      #F3EAD8;
+    --crimson:        #D42826;
+    --crimson-deep:   #9E1C1B;
+    --crimson-soft:   #FAE4E3;
+
+    /* ---- Papercut tints: feature-card fills and floating blobs ----- */
+    --tint-sky:       #C9CDE6;
+    --tint-cream:     #F6E7CE;
+    --tint-rose:      #F0D6D4;
+    --tint-sage:      #DCE3D9;
+    --tint-gold:      #E9DCBE;
+    --tint-navy:      #B9BADC;
+
+    /* Text colour that stays readable on each tint */
+    --on-tint:        #1B1A45;
+
+    /* ---- Focus ---------------------------------------------------- */
+    --focus:          #2A2867;
+    --focus-contrast: #FFFFFF;
+
+    /* ---- Radius --------------------------------------------------- */
+    --r-input:        8px;
+    --r-button:       8px;
+    --r-badge:        16px;
+    --r-card:         24px;
+    --r-feature:      56px;   /* the deliberate jump that creates hierarchy */
+    --r-pill:         999px;
+
+    /* ---- Spacing scale (8px base) --------------------------------- */
+    --s-1:  8px;
+    --s-2:  16px;
+    --s-3:  24px;
+    --s-4:  32px;
+    --s-5:  40px;
+    --s-6:  56px;
+    --s-7:  80px;
+    --s-8:  120px;
+
+    --container:      1200px;
+    --container-text: 720px;   /* comfortable measure for article body */
+    --section-y:      80px;
+    --card-pad:       36px;
+
+    /* ---- Type ----------------------------------------------------- */
+    --font-display: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-body:    "Roboto", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+    --t-eyebrow:  0.6875rem;  /* 11px */
+    --t-caption:  0.75rem;    /* 12px */
+    --t-small:    0.875rem;   /* 14px */
+    --t-body:     1rem;       /* 16px */
+    --t-body-lg:  1.125rem;   /* 18px */
+    --t-sub-sm:   1.25rem;    /* 20px */
+    --t-sub:      1.375rem;   /* 22px */
+    --t-h3:       1.5rem;     /* 24px */
+    --t-h2:       2.25rem;    /* 36px */
+    --t-h1:       2.5rem;     /* 40px */
+    --t-display:  3.75rem;    /* 60px */
+
+    --lh-tight:   1.1;
+    --lh-snug:    1.4;
+    --lh-body:    1.6;
+
+    --track-display: -0.03em;
+    --track-heading: -0.02em;
+    --track-eyebrow: 0.1em;
+
+    /* ---- Motion --------------------------------------------------- */
+    --ease:      cubic-bezier(0.22, 0.61, 0.36, 1);
+    --dur-fast:  140ms;
+    --dur:       240ms;
+    --dur-slow:  420ms;
+
+    /* Blob opacity range from the reference */
+    --blob-opacity: 0.75;
+
+    color-scheme: light;
+}
+
+/* =====================================================================
+   Dark theme
+   ---------------------------------------------------------------------
+   The tints are re-cut at low luminance rather than turned grey, so the
+   papercut cards stay chromatic and the layout keeps reading the same way.
+   ===================================================================== */
+[data-theme="dark"] {
+    --fog:            #0F0E20;
+    --paper:          #1A1836;
+    --paper-sunk:     #201E42;
+    --mist:           #2E2B55;
+
+    --ink:            #F3F2F8;
+    --graphite:       #BFBBD4;
+    --graphite-soft:  #948FAF;
+
+    --navy:           #8E8CD8;
+    --navy-deep:      #B4B2E8;
+    --navy-soft:      #262450;
+    --gold:           #D9BE84;
+    --gold-deep:      #EBD5A8;
+    --gold-soft:      #2F2917;
+    --crimson:        #F0625F;
+    --crimson-deep:   #F79391;
+    --crimson-soft:   #3A1614;
+
+    --tint-sky:       #232A52;
+    --tint-cream:     #3A3220;
+    --tint-rose:      #3D2129;
+    --tint-sage:      #23301F;
+    --tint-gold:      #35301C;
+    --tint-navy:      #262552;
+
+    --on-tint:        #F3F2F8;
+
+    --focus:          #B4B2E8;
+    --focus-contrast: #0F0E20;
+
+    --blob-opacity:   0.5;
+
+    color-scheme: dark;
+}
+
+/* Respect the OS preference until the visitor chooses explicitly.
+   main.js stamps data-theme on <html> before first paint, so this only
+   applies on the very first visit. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not([data-theme="dark"]) {
+        --fog:#0F0E20; --paper:#1A1836; --paper-sunk:#201E42; --mist:#2E2B55;
+        --ink:#F3F2F8; --graphite:#BFBBD4; --graphite-soft:#948FAF;
+        --navy:#8E8CD8; --navy-deep:#B4B2E8; --navy-soft:#262450;
+        --gold:#D9BE84; --gold-deep:#EBD5A8; --gold-soft:#2F2917;
+        --crimson:#F0625F; --crimson-deep:#F79391; --crimson-soft:#3A1614;
+        --tint-sky:#232A52; --tint-cream:#3A3220; --tint-rose:#3D2129;
+        --tint-sage:#23301F; --tint-gold:#35301C; --tint-navy:#262552;
+        --on-tint:#F3F2F8; --focus:#B4B2E8; --focus-contrast:#0F0E20;
+        --blob-opacity:0.5;
+        color-scheme: dark;
+    }
+}
+
+/* ---- Responsive scale-down ---------------------------------------- */
+@media (max-width: 900px) {
+    :root {
+        --section-y: 56px;
+        --card-pad:  28px;
+        --r-feature: 40px;
+        --t-display: 2.5rem;
+        --t-h1:      2rem;
+        --t-h2:      1.75rem;
+    }
+}
+
+@media (max-width: 520px) {
+    :root {
+        --section-y: 48px;
+        --card-pad:  22px;
+        --r-feature: 32px;
+        --r-card:    20px;
+        --t-display: 2.125rem;
+    }
+}

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hall bookings · Admin panel</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#2A2867">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var t = localStorage.getItem('afm-theme');
+    if (t === 'light' || t === 'dark') { d.setAttribute('data-theme', t); }
+  } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=1787772720">
+<link rel="stylesheet" href="../assets/css/base.css?v=1787772748">
+<link rel="stylesheet" href="../assets/css/components.css?v=1790017947">
+<link rel="stylesheet" href="../assets/css/admin.css?v=1790017407">
+</head>
+<body><div style="background:#2A2867;color:#fff;font:500 13px/1.5 Montserrat,system-ui,sans-serif;padding:9px 16px;text-align:center">Admin panel preview — a static snapshot with sample data. Nothing here saves.</div>
+<div class="admin-body">
+
+  <aside class="admin-side">
+    <a class="admin-brand" href="index.html">
+      <img src="../pics/logo.png" alt="">
+      <span>
+        <strong>AFM Warsaw</strong>
+        <span>Admin panel</span>
+      </span>
+    </a>
+
+    <nav class="admin-nav" aria-label="Admin panel">
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+      <span class="admin-nav__label">Word &amp; Sermons</span>
+      <a href="announcements.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M16 8.5a4.5 4.5 0 0 1 0 7"/><path d="M19 5.5a8.5 8.5 0 0 1 0 13"/></svg><span>Announcements</span></a><a href="blog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h9l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 20V5a1.5 1.5 0 0 1 1-1.5Z"/><path d="M14 3.5V9h5"/><path d="M8 13h8M8 17h5"/></svg><span>Blog</span></a><a href="sermons.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z"/></svg><span>Sermons</span></a><a href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span>Gallery</span></a>
+      <span class="admin-nav__label">Get Involved</span>
+      <a href="departments.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5v-2a4 4 0 0 1 4-4h3a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7.5" r="3.2"/><path d="M16.5 20.5v-2a4 4 0 0 0-2.2-3.5"/><path d="M15 4.6a3.2 3.2 0 0 1 0 6"/></svg><span>Departments</span></a><a href="ministries.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10a4.5 4.5 0 0 1 7.5-3.3A4.5 4.5 0 0 1 19.5 11c0 5.4-7.5 10-7.5 10Z"/></svg><span>Ministries</span></a><a href="join-requests.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20.5v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7.5" r="3.2"/><path d="M18 8v6M21 11h-6"/></svg><span>Join requests</span><span class="count">1</span></a><a href="messages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg><span>Messages</span><span class="count">1</span></a>
+      <span class="admin-nav__label">Businesses</span>
+      <a href="businesses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 4.5 4h15L21 9.5"/><path d="M3 9.5a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v8.5h14V12"/><path d="M10 20.5v-5h4v5"/></svg><span>Businesses</span></a>
+      <span class="admin-nav__label">Hall bookings</span>
+      <a href="bookings.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hall bookings</span></a>
+      <span class="admin-nav__label">Site settings</span>
+      <a href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.5 15a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1V4a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.2a2 2 0 1 1 0 4Z"/></svg><span>Site settings</span></a><a href="account.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><span>My account</span></a>    </nav>
+
+    <div class="admin-side__foot">
+      <p style="color:#fff;font-family:var(--font-display);font-size:var(--t-small);margin:0 0 2px">
+        Church Administrator      </p>
+      <p style="color:rgba(255,255,255,.5);margin:0 0 var(--s-2)">
+        admin · owner      </p>
+      <p class="row" style="gap:8px">
+        <a href="../index.html" target="_blank" rel="noopener"
+           style="color:rgba(255,255,255,.8)">View site &nearr;</a>
+      </p>
+      <p style="margin-top:8px">
+        <a href="logout.php" style="color:var(--gold)">Sign out</a>
+      </p>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    
+<div class="admin-head">
+  <div>
+    <span class="eyebrow eyebrow--gold">Admin panel</span>
+    <h1>Hall bookings</h1>
+    <p>
+      Internal scheduling for the church hall. <strong>These bookings are never
+      shown on the public website</strong> — to publish something to visitors,
+      use <a href="announcements.html">Announcements</a> instead.
+    </p>
+  </div>
+  <button class="btn btn--primary" type="button" id="new-booking">+ Add</button>
+</div>
+
+<div class="panel">
+  <div class="cal-head">
+    <h2>October 2026</h2>
+    <div class="btn-row">
+      <a class="btn btn--outline btn--sm"
+         href="bookings.php?y=2026&m=9">
+        &larr; September      </a>
+      <a class="btn btn--ghost btn--sm" href="bookings.html">Today</a>
+      <a class="btn btn--outline btn--sm"
+         href="bookings.php?y=2026&m=11">
+        November &rarr;
+      </a>
+    </div>
+  </div>
+
+  <div class="calendar" id="calendar">
+          <div class="cal-dow">Mon</div>
+          <div class="cal-dow">Tue</div>
+          <div class="cal-dow">Wed</div>
+          <div class="cal-dow">Thu</div>
+          <div class="cal-dow">Fri</div>
+          <div class="cal-dow">Sat</div>
+          <div class="cal-dow">Sun</div>
+    
+          <button type="button"
+              class="cal-day cal-day--muted"
+              data-date="2026-09-28"
+              aria-label="28 September 2026 — 0 booking(s)">
+        <span class="cal-day__num">28</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day cal-day--muted"
+              data-date="2026-09-29"
+              aria-label="29 September 2026 — 0 booking(s)">
+        <span class="cal-day__num">29</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day cal-day--muted"
+              data-date="2026-09-30"
+              aria-label="30 September 2026 — 0 booking(s)">
+        <span class="cal-day__num">30</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-01"
+              aria-label="1 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">1</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-02"
+              aria-label="2 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">2</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-03"
+              aria-label="3 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">3</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-04"
+              aria-label="4 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">4</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-05"
+              aria-label="5 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">5</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-06"
+              aria-label="6 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">6</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-07"
+              aria-label="7 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">7</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-08"
+              aria-label="8 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">8</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-09"
+              aria-label="9 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">9</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-10"
+              aria-label="10 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">10</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-11"
+              aria-label="11 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">11</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-12"
+              aria-label="12 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">12</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-13"
+              aria-label="13 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">13</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-14"
+              aria-label="14 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">14</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day cal-day--today"
+              data-date="2026-10-15"
+              aria-label="15 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">15</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-16"
+              aria-label="16 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">16</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-17"
+              aria-label="17 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">17</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-18"
+              aria-label="18 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">18</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-19"
+              aria-label="19 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">19</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-20"
+              aria-label="20 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">20</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-21"
+              aria-label="21 October 2026 — 1 booking(s)">
+        <span class="cal-day__num">21</span>
+
+                  <span class="cal-event cal-event--confirmed"
+                data-booking="{&quot;id&quot;:1,&quot;title&quot;:&quot;Sample: Wedding reception&quot;,&quot;purpose&quot;:&quot;Private hire&quot;,&quot;date&quot;:&quot;2026-10-21&quot;,&quot;end_date&quot;:&quot;2026-10-21&quot;,&quot;start_time&quot;:&quot;14:00&quot;,&quot;end_time&quot;:&quot;18:00&quot;,&quot;all_day&quot;:0,&quot;requester&quot;:&quot;Sample family&quot;,&quot;contact&quot;:&quot;+48 600 000 000&quot;,&quot;status&quot;:&quot;confirmed&quot;,&quot;notes&quot;:null}">
+                          <span class="cal-event__time">14:00</span>
+                        Sample: Wedding reception          </span>
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-22"
+              aria-label="22 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">22</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-23"
+              aria-label="23 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">23</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-24"
+              aria-label="24 October 2026 — 1 booking(s)">
+        <span class="cal-day__num">24</span>
+
+                  <span class="cal-event cal-event--tentative"
+                data-booking="{&quot;id&quot;:2,&quot;title&quot;:&quot;Sample: Choir rehearsal&quot;,&quot;purpose&quot;:&quot;Praise &amp; worship&quot;,&quot;date&quot;:&quot;2026-10-24&quot;,&quot;end_date&quot;:&quot;2026-10-24&quot;,&quot;start_time&quot;:&quot;18:00&quot;,&quot;end_time&quot;:&quot;20:00&quot;,&quot;all_day&quot;:0,&quot;requester&quot;:&quot;Worship team&quot;,&quot;contact&quot;:&quot;&quot;,&quot;status&quot;:&quot;tentative&quot;,&quot;notes&quot;:null}">
+                          <span class="cal-event__time">18:00</span>
+                        Sample: Choir rehearsal          </span>
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-25"
+              aria-label="25 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">25</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-26"
+              aria-label="26 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">26</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-27"
+              aria-label="27 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">27</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-28"
+              aria-label="28 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">28</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-29"
+              aria-label="29 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">29</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-30"
+              aria-label="30 October 2026 — 0 booking(s)">
+        <span class="cal-day__num">30</span>
+
+        
+              </button>
+          <button type="button"
+              class="cal-day"
+              data-date="2026-10-31"
+              aria-label="31 October 2026 — 1 booking(s)">
+        <span class="cal-day__num">31</span>
+
+                  <span class="cal-event cal-event--confirmed"
+                data-booking="{&quot;id&quot;:3,&quot;title&quot;:&quot;Sample: Youth day&quot;,&quot;purpose&quot;:&quot;Youth ministry&quot;,&quot;date&quot;:&quot;2026-10-31&quot;,&quot;end_date&quot;:&quot;2026-10-31&quot;,&quot;start_time&quot;:&quot;00:00&quot;,&quot;end_time&quot;:&quot;23:59&quot;,&quot;all_day&quot;:1,&quot;requester&quot;:&quot;Youth leaders&quot;,&quot;contact&quot;:&quot;&quot;,&quot;status&quot;:&quot;confirmed&quot;,&quot;notes&quot;:null}">
+                        Sample: Youth day          </span>
+        
+              </button>
+          <button type="button"
+              class="cal-day cal-day--muted"
+              data-date="2026-11-01"
+              aria-label="1 November 2026 — 0 booking(s)">
+        <span class="cal-day__num">1</span>
+
+        
+              </button>
+      </div>
+
+  <div class="cal-legend">
+    <span><i style="background:var(--navy)"></i> Confirmed</span>
+    <span><i style="background:var(--gold)"></i> Tentative</span>
+    <span><i style="background:var(--mist)"></i> Cancelled</span>
+    <span><i style="background:transparent;outline:2px solid var(--gold)"></i> Today</span>
+  </div>
+</div>
+
+<!-- ---------- Upcoming list (works without JS) ---------- -->
+<div class="panel panel--flush">
+  <div style="padding:var(--s-3) var(--s-3) 0">
+    <h2 style="font-size:var(--t-sub-sm);margin:0">Upcoming bookings</h2>
+  </div>
+      <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>When</th><th>Booking</th><th>Requested by</th><th>Status</th><th class="actions">Actions</th></tr>
+        </thead>
+        <tbody>
+                      <tr>
+              <td style="white-space:nowrap">
+                21 October 2026<br>
+                <span class="muted">
+                  14:00–18:00                </span>
+              </td>
+              <td class="title-cell">Sample: Wedding reception<small>Private hire</small></td>
+              <td class="muted">Sample family<br><small>+48 600 000 000</small></td>
+              <td><span class="pill pill--on">
+                Confirmed</span></td>
+              <td class="actions">
+                <a class="btn btn--outline btn--sm"
+                   href="bookings.php?y=2026&m=10">View month</a>
+                <form method="post" style="display:inline" data-confirm="Delete this permanently? This cannot be undone.">
+                  <input type="hidden" name="csrf_token" value="1b8e1a0257f15ceda361d5084d2dee63f383687fbb8b060674e01e240cea68f9">                  <input type="hidden" name="form" value="delete">
+                  <input type="hidden" name="id" value="1">
+                  <button class="btn btn--ghost btn--sm" type="submit" style="color:var(--crimson)">
+                    Delete                  </button>
+                </form>
+              </td>
+            </tr>
+                      <tr>
+              <td style="white-space:nowrap">
+                24 October 2026<br>
+                <span class="muted">
+                  18:00–20:00                </span>
+              </td>
+              <td class="title-cell">Sample: Choir rehearsal<small>Praise &amp; worship</small></td>
+              <td class="muted">Worship team<br><small></small></td>
+              <td><span class="pill pill--warn">
+                Tentative</span></td>
+              <td class="actions">
+                <a class="btn btn--outline btn--sm"
+                   href="bookings.php?y=2026&m=10">View month</a>
+                <form method="post" style="display:inline" data-confirm="Delete this permanently? This cannot be undone.">
+                  <input type="hidden" name="csrf_token" value="1b8e1a0257f15ceda361d5084d2dee63f383687fbb8b060674e01e240cea68f9">                  <input type="hidden" name="form" value="delete">
+                  <input type="hidden" name="id" value="2">
+                  <button class="btn btn--ghost btn--sm" type="submit" style="color:var(--crimson)">
+                    Delete                  </button>
+                </form>
+              </td>
+            </tr>
+                      <tr>
+              <td style="white-space:nowrap">
+                31 October 2026<br>
+                <span class="muted">
+                  All day                </span>
+              </td>
+              <td class="title-cell">Sample: Youth day<small>Youth ministry</small></td>
+              <td class="muted">Youth leaders<br><small></small></td>
+              <td><span class="pill pill--on">
+                Confirmed</span></td>
+              <td class="actions">
+                <a class="btn btn--outline btn--sm"
+                   href="bookings.php?y=2026&m=10">View month</a>
+                <form method="post" style="display:inline" data-confirm="Delete this permanently? This cannot be undone.">
+                  <input type="hidden" name="csrf_token" value="1b8e1a0257f15ceda361d5084d2dee63f383687fbb8b060674e01e240cea68f9">                  <input type="hidden" name="form" value="delete">
+                  <input type="hidden" name="id" value="3">
+                  <button class="btn btn--ghost btn--sm" type="submit" style="color:var(--crimson)">
+                    Delete                  </button>
+                </form>
+              </td>
+            </tr>
+                  </tbody>
+      </table>
+    </div>
+  </div>
+
+<!-- ---------- Booking dialog ---------- -->
+<div class="modal" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+  <div class="modal__card">
+    <div class="modal__head">
+      <h2 id="booking-modal-title">Hall bookings</h2>
+      <button class="icon-btn" type="button" id="booking-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"
+             stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <form method="post" id="booking-form">
+      <input type="hidden" name="csrf_token" value="1b8e1a0257f15ceda361d5084d2dee63f383687fbb8b060674e01e240cea68f9">      <input type="hidden" name="form" value="save">
+      <input type="hidden" name="id" id="b-id" value="0">
+
+      <div class="field">
+        <label for="b-title">Booking title <span class="muted small">(required)</span></label>
+        <input class="input" type="text" id="b-title" name="title" required
+               placeholder="Wedding reception, Youth night, Choir rehearsal…">
+      </div>
+
+      <div class="field">
+        <label for="b-purpose">Purpose</label>
+        <input class="input" type="text" id="b-purpose" name="purpose">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="b-date">Start date</label>
+          <input class="input" type="date" id="b-date" name="date" required>
+        </div>
+        <div class="field">
+          <label for="b-end-date">End date <span class="muted small">(optional)</span></label>
+          <input class="input" type="date" id="b-end-date" name="end_date">
+        </div>
+      </div>
+
+      <label class="checkbox" style="margin-bottom:var(--s-2)">
+        <input type="checkbox" id="b-all-day" name="all_day" value="1">
+        <span>All day</span>
+      </label>
+
+      <div class="field-row" id="b-times">
+        <div class="field">
+          <label for="b-start-time">From</label>
+          <input class="input" type="time" id="b-start-time" name="start_time" value="09:00">
+        </div>
+        <div class="field">
+          <label for="b-end-time">To</label>
+          <input class="input" type="time" id="b-end-time" name="end_time" value="11:00">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="b-requester">Requested by</label>
+          <input class="input" type="text" id="b-requester" name="requester">
+        </div>
+        <div class="field">
+          <label for="b-contact">Contact</label>
+          <input class="input" type="text" id="b-contact" name="contact" placeholder="Phone or email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="b-status">Status</label>
+        <select class="select" id="b-status" name="status">
+          <option value="confirmed">Confirmed</option>
+          <option value="tentative">Tentative</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="b-notes">Notes</label>
+        <textarea class="textarea" id="b-notes" name="notes" style="min-height:90px"></textarea>
+      </div>
+
+      <label class="checkbox" id="clash">
+        <input type="checkbox" name="confirm_clash" value="1">
+        <span>Book anyway, even if it overlaps another booking</span>
+      </label>
+
+      <div class="form-actions">
+        <button class="btn btn--primary" type="submit">Save</button>
+        <button class="btn btn--ghost" type="button" id="booking-cancel">Cancel</button>
+        <span class="spacer"></span>
+        <button class="btn btn--ghost" type="submit" id="booking-delete" name="do_delete" value="1"
+                style="color:var(--crimson);display:none" formnovalidate
+                data-confirm="Delete this permanently? This cannot be undone.">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  </main>
+</div>
+<script src="../assets/js/admin.js?v=1790017393" defer></script>
+<script src="../assets/js/calendar.js?v=1787774188" defer></script>
+<script>
+document.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target, n = f.querySelector('.demo-note');
+  if (!n) {
+    n = document.createElement('p');
+    n.className = 'demo-note';
+    n.style.cssText = 'margin-top:12px;padding:12px 14px;border-radius:8px;background:#F3EAD8;color:#8E7742;font-size:14px';
+    n.textContent = 'This is a static preview, so the form is not connected. On the real site this submission is saved and appears in the admin panel.';
+    f.appendChild(n);
+  }
+  n.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}, true);
+</script>
+</body>
+</html>

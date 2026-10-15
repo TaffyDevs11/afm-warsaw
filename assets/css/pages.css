@@ -1,0 +1,639 @@
+/* =====================================================================
+   AFM Warsaw — page-specific layouts
+   ===================================================================== */
+
+/* =====================================================================
+   Hero
+   ===================================================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--fog);
+    padding-block: var(--s-8) var(--s-7);
+    text-align: center;
+}
+.hero__inner { position: relative; z-index: 1; max-width: 860px; margin-inline: auto; }
+.hero .lead { margin-inline: auto; }
+.hero .btn-row { justify-content: center; margin-top: var(--s-4); }
+
+@media (max-width: 900px) { .hero { padding-block: var(--s-6) var(--s-6); } }
+
+/* Overlapping cards beneath the hero copy, tilted like cut paper. */
+.hero-cards {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-3);
+    margin-top: var(--s-7);
+    text-align: left;
+}
+.hero-cards > * { min-height: 100%; }
+.hero-cards > :nth-child(1) { transform: rotate(-1.4deg); }
+.hero-cards > :nth-child(2) { transform: translateY(-14px); }
+.hero-cards > :nth-child(3) { transform: rotate(1.4deg); }
+.hero-cards > *:hover { transform: translateY(-6px) rotate(0deg); }
+
+@media (max-width: 860px) {
+    .hero-cards { grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
+    .hero-cards > * { transform: none !important; }
+}
+
+/* Compact hero for interior pages. */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--s-7) var(--s-6);
+    background: var(--fog);
+}
+.page-hero__inner { position: relative; z-index: 1; max-width: 760px; }
+.page-hero--center .page-hero__inner { margin-inline: auto; text-align: center; }
+.page-hero--center .lead { margin-inline: auto; }
+
+/* =====================================================================
+   Service times strip
+   ===================================================================== */
+
+.times-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--s-2);
+}
+.time-card {
+    padding: var(--s-3);
+    border-radius: var(--r-card);
+    background: var(--paper);
+    border: 1px solid var(--mist);
+}
+.time-card__when {
+    font-family: var(--font-display);
+    font-size: var(--t-sub-sm);
+    font-weight: 700;
+    letter-spacing: var(--track-heading);
+    color: var(--navy);
+    display: block;
+    margin-bottom: 4px;
+}
+.time-card__what { color: var(--graphite); font-size: var(--t-small); }
+
+/* =====================================================================
+   Welcome / pastor split
+   ===================================================================== */
+
+.portrait {
+    border-radius: var(--r-feature);
+    overflow: hidden;
+    background: var(--mist);
+    aspect-ratio: 4 / 5;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+.portrait--square { aspect-ratio: 1 / 1; border-radius: var(--r-card); }
+
+.quote {
+    border-left: 3px solid var(--gold);
+    padding-left: var(--s-3);
+    margin: var(--s-3) 0;
+    font-size: var(--t-body-lg);
+    color: var(--graphite);
+}
+.quote cite {
+    display: block;
+    margin-top: var(--s-1);
+    font-style: normal;
+    font-family: var(--font-display);
+    font-size: var(--t-small);
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* Numbered "what to expect" list. */
+.step-list { display: grid; gap: var(--s-3); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 780px) { .step-list { grid-template-columns: minmax(0, 1fr); } }
+.step {
+    display: flex;
+    gap: var(--s-2);
+    align-items: flex-start;
+}
+.step__num {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border-radius: var(--r-pill);
+    background: var(--gold-soft);
+    color: var(--gold-deep);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--t-small);
+}
+.step h3 { font-size: var(--t-sub-sm); margin-bottom: 4px; }
+.step p { color: var(--graphite); font-size: var(--t-small); margin: 0; }
+
+/* =====================================================================
+   Gallery
+   ===================================================================== */
+
+.gallery-grid {
+    columns: 4;
+    column-gap: var(--s-2);
+}
+@media (max-width: 1100px) { .gallery-grid { columns: 3; } }
+@media (max-width: 760px)  { .gallery-grid { columns: 2; } }
+@media (max-width: 460px)  { .gallery-grid { columns: 1; } }
+
+.gallery-item {
+    display: block;
+    width: 100%;
+    break-inside: avoid;
+    margin-bottom: var(--s-2);
+    padding: 0;
+    border: 0;
+    background: var(--mist);
+    border-radius: var(--r-card);
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
+    line-height: 0;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    transition: transform var(--dur-slow) var(--ease), opacity var(--dur) var(--ease);
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: var(--s-3) var(--s-2) var(--s-2);
+    background: linear-gradient(to top, rgba(20, 18, 48, 0.78), transparent);
+    color: #fff;
+    font-size: var(--t-small);
+    line-height: 1.4;
+    text-align: left;
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease);
+}
+.gallery-item:hover figcaption,
+.gallery-item:focus-visible figcaption { opacity: 1; }
+
+/* ---- Lightbox ------------------------------------------------------- */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 14, 32, 0.94);
+    padding: var(--s-3);
+}
+.lightbox[open], .lightbox.is-open { display: flex; }
+.lightbox__figure {
+    margin: 0;
+    max-width: min(1200px, 92vw);
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    align-items: center;
+}
+.lightbox__figure img {
+    max-width: 100%;
+    max-height: 78vh;
+    width: auto;
+    border-radius: var(--r-card);
+    object-fit: contain;
+}
+.lightbox__caption {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--t-small);
+    text-align: center;
+    max-width: 60ch;
+}
+.lightbox__btn {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 52px; height: 52px;
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease);
+}
+.lightbox__btn:hover { background: rgba(255, 255, 255, 0.2); }
+.lightbox__btn svg { width: 22px; height: 22px; }
+.lightbox__close { top: var(--s-3); right: var(--s-3); }
+.lightbox__prev  { left: var(--s-3);  top: 50%; transform: translateY(-50%); }
+.lightbox__next  { right: var(--s-3); top: 50%; transform: translateY(-50%); }
+@media (max-width: 620px) {
+    .lightbox__prev { left: var(--s-1); }
+    .lightbox__next { right: var(--s-1); }
+    .lightbox__btn { width: 44px; height: 44px; }
+}
+
+/* =====================================================================
+   Announcements
+   ===================================================================== */
+
+.ann-list { display: grid; gap: var(--s-3); }
+
+.ann-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
+    background: var(--paper);
+    border: 1px solid var(--mist);
+    border-radius: var(--r-card);
+    overflow: hidden;
+}
+.ann-card--no-poster { grid-template-columns: 1fr; }
+.ann-card__poster {
+    background: var(--mist);
+    cursor: zoom-in;
+    border: 0;
+    padding: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.ann-card__poster img { width: 100%; height: 100%; object-fit: cover; min-height: 240px; }
+.ann-card__body { padding: var(--card-pad); display: flex; flex-direction: column; gap: var(--s-1); }
+.ann-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    font-size: var(--t-small);
+    color: var(--graphite-soft);
+    margin-top: var(--s-1);
+}
+.ann-card__meta strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--t-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: var(--track-eyebrow);
+    color: var(--graphite-soft);
+    font-weight: 500;
+}
+.ann-card__meta span { color: var(--ink); }
+
+@media (max-width: 720px) {
+    .ann-card { grid-template-columns: 1fr; }
+    .ann-card__poster img { min-height: 0; aspect-ratio: 3 / 4; max-height: 420px; }
+}
+
+/* =====================================================================
+   Blog & sermons
+   ===================================================================== */
+
+.post-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+@media (max-width: 980px) { .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .post-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.post-card__media { aspect-ratio: 16 / 10; }
+.post-card__meta {
+    font-size: var(--t-caption);
+    color: var(--graphite-soft);
+    display: flex;
+    gap: var(--s-1);
+    flex-wrap: wrap;
+}
+
+/* Play badge over a sermon thumbnail. */
+.play-badge {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(20, 18, 48, 0.28);
+    transition: background var(--dur) var(--ease);
+}
+.play-badge span {
+    width: 60px; height: 60px;
+    display: grid; place-items: center;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--navy-deep);
+}
+.play-badge svg { width: 22px; height: 22px; margin-left: 3px; }
+.card--link:hover .play-badge { background: rgba(20, 18, 48, 0.12); }
+
+/* ---- Article body --------------------------------------------------- */
+
+.article { max-width: var(--container-text); margin-inline: auto; }
+.article__body { font-size: var(--t-body-lg); color: var(--graphite); }
+.article__body p { margin-bottom: var(--s-3); }
+.article__cover {
+    border-radius: var(--r-card);
+    overflow: hidden;
+    background: var(--mist);
+    margin-bottom: var(--s-5);
+}
+.article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    align-items: center;
+    color: var(--graphite-soft);
+    font-size: var(--t-small);
+    margin-bottom: var(--s-4);
+}
+
+.video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--r-card);
+    overflow: hidden;
+    background: var(--navy-deep);
+    margin-bottom: var(--s-4);
+}
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* =====================================================================
+   Live page
+   ===================================================================== */
+
+.live-panel {
+    border-radius: var(--r-feature);
+    padding: var(--s-7) var(--s-5);
+    background: var(--navy-deep);
+    color: #fff;
+    text-align: center;
+}
+.live-panel h2, .live-panel h1 { color: #fff; }
+.live-panel p { color: rgba(255, 255, 255, 0.78); max-width: 52ch; margin-inline: auto; }
+.live-panel .btn-row { justify-content: center; margin-top: var(--s-4); }
+
+/* =====================================================================
+   Contact
+   ===================================================================== */
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--s-7); align-items: start; }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); } }
+
+.info-list { display: grid; gap: var(--s-3); }
+.info-item { display: flex; gap: var(--s-2); align-items: flex-start; }
+.info-item__icon {
+    flex-shrink: 0;
+    width: 42px; height: 42px;
+    display: grid; place-items: center;
+    border-radius: var(--r-badge);
+    background: var(--navy-soft);
+    color: var(--navy);
+}
+.info-item__icon svg { width: 19px; height: 19px; }
+.info-item h3 {
+    font-family: var(--font-display);
+    font-size: var(--t-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: var(--track-eyebrow);
+    font-weight: 500;
+    color: var(--graphite-soft);
+    margin: 0 0 4px;
+}
+.info-item p { margin: 0; color: var(--ink); }
+
+.map-frame {
+    border-radius: var(--r-card);
+    overflow: hidden;
+    border: 1px solid var(--mist);
+    aspect-ratio: 16 / 9;
+    background: var(--mist);
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* =====================================================================
+   Detail page: department / ministry
+   ===================================================================== */
+
+.detail-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-7);
+    align-items: center;
+}
+@media (max-width: 900px) { .detail-head { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); } }
+
+.detail-head__media {
+    border-radius: var(--r-feature);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--mist);
+}
+.detail-head__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.fact-list { display: grid; gap: var(--s-2); margin-top: var(--s-3); }
+.fact {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: var(--s-2);
+    padding-block: 10px;
+    border-top: 1px solid var(--mist);
+    font-size: var(--t-small);
+}
+.fact dt {
+    font-family: var(--font-display);
+    font-size: var(--t-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: var(--track-eyebrow);
+    color: var(--graphite-soft);
+    font-weight: 500;
+    margin: 0;
+}
+.fact dd { margin: 0; color: var(--ink); }
+
+.form-panel {
+    background: var(--paper);
+    border: 1px solid var(--mist);
+    border-radius: var(--r-card);
+    padding: var(--card-pad);
+}
+
+/* =====================================================================
+   404
+   ===================================================================== */
+
+.error-page {
+    min-height: 56vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding-block: var(--s-7);
+}
+.error-page .display { color: var(--navy); }
+
+/* =====================================================================
+   Business directory
+   ===================================================================== */
+
+.biz-search {
+    display: flex;
+    gap: var(--s-1);
+    max-width: 560px;
+    margin: 0 auto var(--s-3);
+}
+.biz-search .input { flex: 1; min-width: 0; }
+@media (max-width: 520px) {
+    .biz-search { flex-direction: column; }
+    .biz-search .btn { width: 100%; }
+}
+
+.biz-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-3);
+}
+@media (max-width: 980px) { .biz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .biz-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.biz-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding: var(--card-pad);
+    background: var(--paper);
+    border: 1px solid var(--mist);
+    border-radius: var(--r-card);
+    transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.biz-card:hover { border-color: var(--navy); transform: translateY(-3px); }
+/* Featured listings take a papercut tint instead of plain paper. */
+.biz-card--featured { background: var(--tint-cream); border-color: transparent; }
+
+.biz-card__head { display: flex; align-items: center; gap: var(--s-2); }
+.biz-card__titles { display: flex; flex-direction: column; gap: 4px; min-width: 0; align-items: flex-start; }
+.biz-card__name { font-size: var(--t-sub-sm); margin: 0; }
+.biz-card__name a { color: inherit; text-decoration: none; }
+.biz-card .card__text { margin: 0; }
+
+/* Logos are whatever shape the business supplied: contain, never crop. */
+.biz-logo {
+    flex-shrink: 0;
+    width: 72px; height: 72px;
+    border-radius: var(--r-badge);
+    background: #fff;
+    border: 1px solid var(--mist);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 8px;
+}
+.biz-logo img { width: 100%; height: 100%; object-fit: contain; }
+.biz-logo__initials {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: var(--track-heading);
+    color: var(--navy);
+}
+[data-theme="dark"] .biz-logo__initials { color: #2A2867; }
+.biz-logo--lg { width: 168px; height: 168px; border-radius: var(--r-card); padding: 16px; }
+.biz-logo--lg .biz-logo__initials { font-size: 3rem; }
+
+.biz-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.biz-tags li {
+    font-size: var(--t-caption);
+    padding: 4px 10px;
+    border-radius: var(--r-pill);
+    background: var(--navy-soft);
+    color: var(--navy);
+}
+
+/* Row of round contact buttons. Sits above the card's full-card link. */
+.biz-quick { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; position: relative; z-index: 2; }
+.biz-icon-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 40px; height: 40px;
+    border-radius: var(--r-pill);
+    background: var(--navy-soft);
+    color: var(--navy);
+    flex-shrink: 0;
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.biz-icon-btn svg { width: 18px; height: 18px; }
+a.biz-icon-btn:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+/* WhatsApp keeps its recognisable green — people look for it. */
+.biz-icon-btn--whatsapp { background: #DCF5E5; color: #128C4B; }
+a.biz-icon-btn--whatsapp:hover { background: #128C4B; color: #fff; }
+[data-theme="dark"] .biz-icon-btn--whatsapp { background: #163A26; color: #6FDB9A; }
+
+.biz-contact-btn svg { width: 18px; height: 18px; }
+
+/* ---- Detail page ---------------------------------------------------- */
+
+.biz-hero { display: grid; grid-template-columns: auto 1fr; gap: var(--s-5); align-items: center; }
+.biz-hero__body { min-width: 0; }
+@media (max-width: 700px) {
+    .biz-hero { grid-template-columns: minmax(0, 1fr); gap: var(--s-3); }
+    .biz-logo--lg { width: 120px; height: 120px; }
+}
+
+.biz-detail { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: var(--s-6); align-items: start; }
+.biz-detail--solo { grid-template-columns: minmax(0, 1fr); max-width: var(--container-text); }
+@media (max-width: 900px) { .biz-detail { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); } }
+/* The contact panel follows you down long descriptions on desktop. */
+@media (min-width: 901px) { .biz-contact-panel { position: sticky; top: 100px; } }
+
+/* Flyers & posters: natural aspect ratio, never cropped — a poster's text
+   runs to its edges, so cropping would cut off the details people need. */
+.flyer-grid {
+    columns: 4;
+    column-gap: var(--s-3);
+}
+@media (max-width: 980px) { .flyer-grid { columns: 3; } }
+@media (max-width: 640px) { .flyer-grid { columns: 2; column-gap: var(--s-2); } }
+.flyer { margin: 0 0 var(--s-3); break-inside: avoid; }
+.flyer__btn {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border-radius: var(--r-card);
+    background: var(--paper);
+    border: 1px solid var(--mist);
+    cursor: zoom-in;
+}
+.flyer__btn img { width: 100%; height: auto; }
+.flyer figcaption { margin-top: 8px; padding-inline: 4px; }
+
+.biz-services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px var(--s-3); }
+@media (max-width: 560px) { .biz-services { grid-template-columns: minmax(0, 1fr); } }
+.biz-services li { position: relative; padding-left: 26px; color: var(--graphite); }
+.biz-services li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.45em;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    box-sizing: border-box;
+    border: 4px solid var(--gold);
+}
+
+.biz-contact-list { list-style: none; margin: var(--s-1) 0 0; padding: 0; display: grid; gap: var(--s-2); }
+.biz-contact-list li { display: flex; align-items: center; gap: var(--s-2); min-width: 0; }
+.biz-contact-list a { overflow-wrap: anywhere; font-weight: 500; }
+
+/* "Flyers & posters · 3" link on a directory card — sits above the card link. */
+.biz-flyer-count {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-size: var(--t-caption);
+    font-weight: 500;
+    color: var(--gold-deep);
+    background: var(--gold-soft);
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    text-decoration: none;
+}
+.biz-flyer-count:hover { background: var(--gold); color: #241E10; }
+.biz-flyer-count svg { width: 15px; height: 15px; }
