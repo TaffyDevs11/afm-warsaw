@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · Admin panel</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#2A2867">
+<script>
+(function () {
+  var d = document.documentElement; d.classList.add('js');
+  try { var t = localStorage.getItem('afm-theme');
+        if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t); } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=1787772720">
+<link rel="stylesheet" href="../assets/css/base.css?v=1787772748">
+<link rel="stylesheet" href="../assets/css/components.css?v=1792483199">
+<link rel="stylesheet" href="../assets/css/admin.css?v=1790017407">
+</head>
+<body><div style="background:#2A2867;color:#fff;font:500 13px/1.5 Montserrat,system-ui,sans-serif;padding:9px 16px;text-align:center">Admin panel preview — a static snapshot with sample data. Nothing here saves.</div>
+
+<div class="login-wrap">
+  <div class="blob-field" aria-hidden="true"><svg class="blob" style="top:-70px;right:-60px;width:320px;height:320px;transform:rotate(18deg);" viewBox="0 0 200 200" aria-hidden="true" focusable="false" preserveAspectRatio="none"><path d="M100 2c46 6 88 42 96 86 8 43-20 84-60 100-40 15-88 2-114-32C-2 124-4 76 20 44 42 15 66-2 100 2Z" fill="var(--tint-gold)"/></svg><svg class="blob" style="bottom:-90px;left:-70px;width:280px;height:280px;transform:rotate(-12deg);" viewBox="0 0 200 200" aria-hidden="true" focusable="false" preserveAspectRatio="none"><path d="M104 8c34 0 66 18 82 48 15 29 8 66-12 92-21 27-56 44-89 40C51 184 20 158 9 124-2 90 8 49 34 27 54 11 79 8 104 8Z" fill="var(--tint-sky)"/></svg><svg class="blob" style="top:38%;right:12%;width:120px;height:120px;transform:rotate(30deg);opacity:0.5;" viewBox="0 0 200 200" aria-hidden="true" focusable="false" preserveAspectRatio="none"><path d="M112 6c38 8 76 34 84 70 8 35-13 71-42 94-30 23-71 31-102 14C21 167 4 131 8 96 12 58 34 24 70 11c14-5 28-8 42-5Z" fill="var(--tint-rose)"/></svg><svg class="blob" style="top:12%;left:10%;width:90px;height:90px;transform:rotate(-20deg);opacity:0.55;" viewBox="0 0 200 200" aria-hidden="true" focusable="false" preserveAspectRatio="none"><path d="M96 10c42-6 84 16 96 54 12 39-6 84-40 106-33 22-79 19-108-6C15 139 2 96 16 60 28 30 63 15 96 10Z" fill="var(--tint-cream)"/></svg></div>
+  <div class="login-card">
+    <img src="../pics/logo.png" alt="">
+    <span class="eyebrow eyebrow--gold">AFM Warsaw</span>
+    <h1 style="font-size:var(--t-h3)">Admin panel</h1>
+
+    
+    <form method="post" novalidate>
+      <input type="hidden" name="csrf_token" value="b49926dc935a4da104cb804b27d0906e48618133f293eee73eb566db85789402">
+      <div class="field">
+        <label for="username">Username</label>
+        <input class="input" type="text" id="username" name="username" required autofocus
+               value="" autocomplete="username">
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input class="input" type="password" id="password" name="password" required
+               autocomplete="current-password">
+      </div>
+
+      <button class="btn btn--primary btn--lg btn--block" type="submit">Sign in</button>
+    </form>
+
+    <p style="margin-top:var(--s-3)">
+      <a class="btn btn--ghost small" href="../index.html">&larr; View site</a>
+    </p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target, n = f.querySelector('.demo-note');
+  if (!n) {
+    n = document.createElement('p');
+    n.className = 'demo-note';
+    n.style.cssText = 'margin-top:12px;padding:12px 14px;border-radius:8px;background:#F3EAD8;color:#8E7742;font-size:14px';
+    n.textContent = 'This is a static preview, so the form is not connected. On the real site this submission is saved and appears in the admin panel.';
+    f.appendChild(n);
+  }
+  n.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}, true);
+</script>
+</body>
+</html>

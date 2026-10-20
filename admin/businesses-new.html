@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Businesses · Admin panel</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#2A2867">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var t = localStorage.getItem('afm-theme');
+    if (t === 'light' || t === 'dark') { d.setAttribute('data-theme', t); }
+  } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=1787772720">
+<link rel="stylesheet" href="../assets/css/base.css?v=1787772748">
+<link rel="stylesheet" href="../assets/css/components.css?v=1792483199">
+<link rel="stylesheet" href="../assets/css/admin.css?v=1790017407">
+</head>
+<body><div style="background:#2A2867;color:#fff;font:500 13px/1.5 Montserrat,system-ui,sans-serif;padding:9px 16px;text-align:center">Admin panel preview — a static snapshot with sample data. Nothing here saves.</div>
+<div class="admin-body">
+
+  <aside class="admin-side">
+    <a class="admin-brand" href="index.html">
+      <img src="../pics/logo.png" alt="">
+      <span>
+        <strong>AFM Warsaw</strong>
+        <span>Admin panel</span>
+      </span>
+    </a>
+
+    <nav class="admin-nav" aria-label="Admin panel">
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+      <span class="admin-nav__label">Word &amp; Sermons</span>
+      <a href="announcements.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M16 8.5a4.5 4.5 0 0 1 0 7"/><path d="M19 5.5a8.5 8.5 0 0 1 0 13"/></svg><span>Announcements</span></a><a href="blog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h9l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 20V5a1.5 1.5 0 0 1 1-1.5Z"/><path d="M14 3.5V9h5"/><path d="M8 13h8M8 17h5"/></svg><span>Blog</span></a><a href="sermons.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z"/></svg><span>Sermons</span></a><a href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span>Gallery</span></a>
+      <span class="admin-nav__label">Get Involved</span>
+      <a href="departments.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5v-2a4 4 0 0 1 4-4h3a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7.5" r="3.2"/><path d="M16.5 20.5v-2a4 4 0 0 0-2.2-3.5"/><path d="M15 4.6a3.2 3.2 0 0 1 0 6"/></svg><span>Departments</span></a><a href="ministries.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10a4.5 4.5 0 0 1 7.5-3.3A4.5 4.5 0 0 1 19.5 11c0 5.4-7.5 10-7.5 10Z"/></svg><span>Ministries</span></a><a href="join-requests.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20.5v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7.5" r="3.2"/><path d="M18 8v6M21 11h-6"/></svg><span>Join requests</span><span class="count">1</span></a><a href="messages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg><span>Messages</span><span class="count">1</span></a>
+      <span class="admin-nav__label">Businesses</span>
+      <a href="businesses.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 4.5 4h15L21 9.5"/><path d="M3 9.5a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v8.5h14V12"/><path d="M10 20.5v-5h4v5"/></svg><span>Businesses</span></a>
+      <span class="admin-nav__label">Hall bookings</span>
+      <a href="bookings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hall bookings</span></a>
+      <span class="admin-nav__label">Site settings</span>
+      <a href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.5 15a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1V4a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.2a2 2 0 1 1 0 4Z"/></svg><span>Site settings</span></a><a href="account.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><span>My account</span></a>    </nav>
+
+    <div class="admin-side__foot">
+      <p style="color:#fff;font-family:var(--font-display);font-size:var(--t-small);margin:0 0 2px">
+        Church Administrator      </p>
+      <p style="color:rgba(255,255,255,.5);margin:0 0 var(--s-2)">
+        admin · owner      </p>
+      <p class="row" style="gap:8px">
+        <a href="../index.html" target="_blank" rel="noopener"
+           style="color:rgba(255,255,255,.8)">View site &nearr;</a>
+      </p>
+      <p style="margin-top:8px">
+        <a href="login.html" style="color:var(--gold)">Sign out</a>
+      </p>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    
+
+  <div class="admin-head">
+    <div>
+      <span class="eyebrow eyebrow--gold">Businesses</span>
+      <h1>Add</h1>
+      <p>Everything here is shown publicly in the Business Directory once published.</p>
+    </div>
+    <a class="btn btn--outline" href="businesses.html">Cancel</a>
+  </div>
+
+  <form method="post" enctype="multipart/form-data" data-dirty-guard>
+    <input type="hidden" name="csrf_token" value="b49926dc935a4da104cb804b27d0906e48618133f293eee73eb566db85789402">    <input type="hidden" name="form" value="save">
+    <input type="hidden" name="id" value="0">
+
+    <div class="panel">
+      <h2>Business</h2>
+      <div class="form-grid">
+        <div class="field">
+          <label for="name">Business name <span class="muted small">(required)</span></label>
+          <input class="input" type="text" id="name" name="name" required value="">
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <input class="input" type="text" id="category" name="category" list="biz-cats"
+                 value="" placeholder="Food & catering, Beauty, Cleaning…">
+          <datalist id="biz-cats">
+            <option value="Food &amp; catering"></option><option value="Home services"></option>          </datalist>
+          <span class="hint">Used for the filter chips on the public page.</span>
+        </div>
+        <div class="field">
+          <label for="owner_name">Owner / run by <span class="muted small">(optional)</span></label>
+          <input class="input" type="text" id="owner_name" name="owner_name" value="">
+        </div>
+        <div class="field">
+          <label for="location">Location / area <span class="muted small">(optional)</span></label>
+          <input class="input" type="text" id="location" name="location" value=""
+                 placeholder="Mokotów, Warsaw · or · Online / delivery">
+        </div>
+
+        <div class="bilingual">
+          <span class="bilingual__tag">One-line tagline (shown on the card)</span>
+          <div class="field">
+            <label for="tagline_en">English</label>
+            <input class="input" type="text" id="tagline_en" name="tagline_en" value="">
+          </div>
+          <div class="field">
+            <label for="tagline_pl">Polski</label>
+            <input class="input" type="text" id="tagline_pl" name="tagline_pl" value="">
+          </div>
+        </div>
+
+        <div class="bilingual">
+          <span class="bilingual__tag">Description — leave a blank line between paragraphs</span>
+          <div class="field">
+            <label for="description_en">English</label>
+            <textarea class="textarea" id="description_en" name="description_en"
+                      style="min-height:160px"></textarea>
+          </div>
+          <div class="field">
+            <label for="description_pl">Polski</label>
+            <textarea class="textarea" id="description_pl" name="description_pl"
+                      style="min-height:160px"></textarea>
+          </div>
+        </div>
+
+        <div class="bilingual">
+          <span class="bilingual__tag">Services / products — one per line</span>
+          <div class="field">
+            <label for="services_en">English</label>
+            <textarea class="textarea" id="services_en" name="services_en" style="min-height:140px"
+                      placeholder="Wedding cakes&#10;Birthday cakes&#10;Catering for events"></textarea>
+          </div>
+          <div class="field">
+            <label for="services_pl">Polski</label>
+            <textarea class="textarea" id="services_pl" name="services_pl" style="min-height:140px"
+                      placeholder="Torty weselne&#10;Torty urodzinowe&#10;Catering na wydarzenia"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Contact &amp; social links</h2>
+      <p class="muted small" style="margin-bottom:var(--s-2)">
+        Type them however you have them — <code>@handle</code>, a full link, or a number with spaces.
+        Each one becomes a working button (WhatsApp opens a chat, Call dials, Instagram opens the profile).
+        Leave any field empty to hide that button.
+      </p>
+      <div class="form-grid">
+                  <div class="field">
+            <label for="whatsapp">WhatsApp number</label>
+            <input class="input" type="text"
+                   id="whatsapp" name="whatsapp"
+                   value="" placeholder="+48 600 100 200">
+                                  </div>
+                  <div class="field">
+            <label for="phone">Phone (for &quot;Call&quot;)</label>
+            <input class="input" type="text"
+                   id="phone" name="phone"
+                   value="" placeholder="+48 22 123 45 67">
+                                  </div>
+                  <div class="field">
+            <label for="email">Email</label>
+            <input class="input" type="email"
+                   id="email" name="email"
+                   value="" placeholder="hello@business.pl">
+                                  </div>
+                  <div class="field">
+            <label for="website">Website</label>
+            <input class="input" type="text"
+                   id="website" name="website"
+                   value="" placeholder="business.pl">
+                                  </div>
+                  <div class="field">
+            <label for="instagram">Instagram</label>
+            <input class="input" type="text"
+                   id="instagram" name="instagram"
+                   value="" placeholder="@handle or profile link">
+                                  </div>
+                  <div class="field">
+            <label for="tiktok">TikTok</label>
+            <input class="input" type="text"
+                   id="tiktok" name="tiktok"
+                   value="" placeholder="@handle or profile link">
+                                  </div>
+                  <div class="field">
+            <label for="facebook">Facebook</label>
+            <input class="input" type="text"
+                   id="facebook" name="facebook"
+                   value="" placeholder="page name or link">
+                                  </div>
+              </div>
+      <p class="hint">A 9-digit WhatsApp number without a country code is treated as Polish (+48).</p>
+    </div>
+
+    <div class="panel">
+      <h2>Logo</h2>
+      <div class="field">
+                <label for="logo" class="visually-hidden">Logo</label>
+        <input class="input" type="file" id="logo" name="logo" accept="image/*" style="max-width:420px">
+        <span class="hint">Square or transparent PNG works best. Without one, the business initials are shown.</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Flyers &amp; posters</h2>
+      <p class="muted small" style="margin-bottom:var(--s-2)">
+        Upload as many adverts, flyers or posters as the business has. They appear on the business
+        page in a gallery; visitors can open each one full size and page through them.
+      </p>
+
+      
+      <div class="field" style="margin-top:var(--s-3)">
+        <label for="flyers">Add flyers / posters          <span class="muted small">(you can select several at once)</span></label>
+        <input class="input" type="file" id="flyers" name="flyers[]" accept="image/*" multiple style="max-width:420px">
+        <span class="hint">JPG, PNG, WEBP or GIF, up to 12MB each.
+          Portrait posters and square social-media flyers both display well.</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Visibility</h2>
+      <div class="form-grid">
+        <div class="field">
+          <label for="expires_at">Advert end date <span class="muted small">(optional)</span></label>
+          <input class="input" type="date" id="expires_at" name="expires_at" value="">
+          <span class="hint">The listing disappears from the public site after this day. Empty = no end.</span>
+        </div>
+        <div class="field">
+          <label for="sort_order">Order</label>
+          <input class="input" type="number" id="sort_order" name="sort_order" value="0">
+          <span class="hint">Lower numbers come first. Featured listings always lead.</span>
+        </div>
+        <div class="field">
+          <label for="slug">URL slug <span class="muted small">(optional)</span></label>
+          <input class="input" type="text" id="slug" name="slug" value="">
+          <span class="hint">Leave empty to build it from the name.</span>
+        </div>
+        <div class="field field--full">
+          <label class="checkbox">
+            <input type="checkbox" name="is_published" value="1" checked>
+            <span>Published</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="is_featured" value="1" >
+            <span>Featured — shown first, with a highlighted card</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn--primary" type="submit">Save</button>
+        <a class="btn btn--ghost" href="businesses.html">Cancel</a>
+              </div>
+    </div>
+  </form>
+
+
+  </main>
+</div>
+<script src="../assets/js/admin.js?v=1790017393" defer></script>
+<script>
+document.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target, n = f.querySelector('.demo-note');
+  if (!n) {
+    n = document.createElement('p');
+    n.className = 'demo-note';
+    n.style.cssText = 'margin-top:12px;padding:12px 14px;border-radius:8px;background:#F3EAD8;color:#8E7742;font-size:14px';
+    n.textContent = 'This is a static preview, so the form is not connected. On the real site this submission is saved and appears in the admin panel.';
+    f.appendChild(n);
+  }
+  n.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}, true);
+</script>
+</body>
+</html>

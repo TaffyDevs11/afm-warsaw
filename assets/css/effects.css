@@ -1,0 +1,334 @@
+/* =====================================================================
+   AFM Warsaw — motion & interaction layer
+   ---------------------------------------------------------------------
+   Everything here is an enhancement on top of the finished design:
+     • the intro screen (once per visit)
+     • smooth scrolling (Lenis) and the reading-progress line
+     • scroll-triggered reveals and a gentle parallax on the papercut shapes
+     • hover feedback on links, buttons, cards and images
+   House rules still apply: flat, no shadows, no gradients on surfaces.
+   All motion is switched off for visitors who ask for reduced motion.
+   ===================================================================== */
+
+/* ---- Smooth scrolling (Lenis) -------------------------------------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* In-page jumps (e.g. "Join this team" → #join) land below the sticky header. */
+html { scroll-padding-top: calc(var(--header-h, 76px) + 16px); }
+
+/* =====================================================================
+   Intro screen
+   ===================================================================== */
+
+.intro { display: none; }
+
+.show-intro .intro {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: grid;
+    place-items: center;
+    padding: var(--s-3);
+    background: #15143A;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+.show-intro body { overflow: hidden; }
+
+/* A slow-breathing pool of light behind everything. */
+.intro__glow {
+    position: absolute;
+    width: 140vmax; height: 140vmax;
+    left: 50%; top: 42%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(187, 158, 101, 0.28) 0%, rgba(42, 40, 103, 0.35) 28%, rgba(21, 20, 58, 0) 60%);
+    animation: intro-breathe 4s ease-in-out infinite;
+}
+@keyframes intro-breathe {
+    0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+}
+
+.intro__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-3);
+    max-width: 640px;
+}
+
+.intro__art {
+    width: clamp(150px, 30vmin, 230px);
+    height: auto;
+    overflow: visible;
+}
+.intro__rays {
+    transform-origin: 100px 58px;
+    animation: intro-rays 14s linear infinite, intro-fade 900ms 150ms var(--ease) both;
+}
+@keyframes intro-rays { to { transform: rotate(360deg); } }
+.intro__halo {
+    transform-origin: 100px 56px;
+    animation: intro-halo 1000ms 250ms cubic-bezier(.34, 1.56, .64, 1) both;
+}
+@keyframes intro-halo { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+.intro__figure {
+    animation: intro-rise 1100ms 100ms var(--ease) both;
+}
+.intro__sash {
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: intro-draw 1200ms 700ms var(--ease) forwards;
+}
+@keyframes intro-draw { to { stroke-dashoffset: 0; } }
+@keyframes intro-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes intro-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.intro__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    animation: intro-rise 900ms 450ms var(--ease) both;
+}
+.intro__brand img {
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 3px;
+    object-fit: contain;
+}
+.intro__brand strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3.2vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: var(--track-heading);
+    line-height: 1.15;
+}
+.intro__brand span > span {
+    display: block;
+    margin-top: 4px;
+    font-size: var(--t-caption);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #D9BE84;
+}
+
+.intro__verse {
+    margin: 0;
+    max-width: 52ch;
+    animation: intro-rise 900ms 800ms var(--ease) both;
+}
+.intro__verse p {
+    margin: 0 0 var(--s-1);
+    font-size: clamp(1rem, 2.2vw, 1.1875rem);
+    line-height: 1.55;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.88);
+}
+.intro__verse cite {
+    font-style: normal;
+    font-family: var(--font-display);
+    font-size: var(--t-caption);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #D9BE84;
+}
+
+.intro__bar {
+    width: 160px; height: 2px;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 2px;
+    overflow: hidden;
+    animation: intro-fade 600ms 900ms both;
+}
+.intro__bar span {
+    display: block;
+    height: 100%;
+    background: #D9BE84;
+    transform-origin: left;
+    animation: intro-load 2200ms 300ms cubic-bezier(.65, .05, .36, 1) both;
+}
+@keyframes intro-load { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.intro__skip {
+    position: absolute;
+    right: var(--s-3); bottom: var(--s-3);
+    font-family: var(--font-display);
+    font-size: var(--t-caption);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--r-pill);
+    padding: 8px 16px;
+    cursor: pointer;
+    animation: intro-fade 600ms 1200ms both;
+}
+.intro__skip:hover { color: #fff; border-color: #D9BE84; }
+
+/* Leaving: the curtain lifts and the page settles in underneath. */
+.intro.is-leaving {
+    animation: intro-out 700ms cubic-bezier(.7, 0, .2, 1) forwards;
+    pointer-events: none;
+}
+@keyframes intro-out {
+    to { opacity: 0; transform: translateY(-3%); visibility: hidden; }
+}
+.intro-done main, .intro-done .site-header {
+    animation: page-in 700ms var(--ease) both;
+}
+@keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* =====================================================================
+   Reading progress
+   ===================================================================== */
+
+.scroll-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 120;
+    pointer-events: none;
+}
+.scroll-progress span {
+    display: block;
+    height: 100%;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+/* =====================================================================
+   Header on scroll: a slimmer bar once the page moves
+   ===================================================================== */
+
+.header-bar { transition: min-height var(--dur) var(--ease), padding var(--dur) var(--ease); }
+.site-header.is-stuck .header-bar { min-height: 64px; padding-block: 8px; }
+.brand img { transition: transform var(--dur-slow) var(--ease), width var(--dur) var(--ease), height var(--dur) var(--ease); }
+.site-header.is-stuck .brand img { width: 40px; height: 40px; }
+.brand:hover img { transform: rotate(-8deg) scale(1.05); }
+
+/* =====================================================================
+   Hover feedback
+   ===================================================================== */
+
+/* Nav: an underline that draws in from the left. */
+.main-nav a { position: relative; border-bottom-color: transparent !important; }
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 2px; right: 2px; bottom: -1px;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur) var(--ease);
+}
+.main-nav a:hover::after { transform: scaleX(1); }
+.main-nav a[aria-current="page"]::after { transform: scaleX(1); background: var(--navy); }
+
+/* Buttons: a small lift, and arrows nudge forward. */
+.btn { will-change: transform; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn--primary, .btn--gold, .btn--crimson { position: relative; overflow: hidden; isolation: isolate; }
+.btn--primary::before, .btn--gold::before, .btn--crimson::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateX(-101%);
+    transition: transform var(--dur-slow) var(--ease);
+}
+.btn--primary:hover::before, .btn--gold:hover::before, .btn--crimson:hover::before { transform: translateX(0); }
+
+/* Cards: lift, and their photos ease in. */
+.card--link, .team-card, .feature, .biz-card, .time-card {
+    transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.time-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+.team-card__foot { transition: letter-spacing var(--dur) var(--ease); }
+.team-card:hover .team-card__foot { letter-spacing: 0.02em; }
+.portrait img, .detail-head__media img, .article__cover img {
+    transition: transform 1.2s var(--ease);
+}
+.portrait:hover img, .detail-head__media:hover img { transform: scale(1.03); }
+
+/* Footer and in-text links: an underline that slides in. */
+.footer-links a, .site-footer p a {
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+    transition: background-size var(--dur) var(--ease), color var(--dur-fast) var(--ease);
+}
+.footer-links a:hover, .site-footer p a:hover { background-size: 100% 1px; text-decoration: none; }
+
+/* Icon controls */
+.social-row a { transition: transform var(--dur) var(--ease), background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease); }
+.social-row a:hover { transform: translateY(-3px); }
+#theme-toggle svg { transition: transform var(--dur-slow) var(--ease); }
+#theme-toggle:hover svg { transform: rotate(25deg); }
+.to-top { transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility var(--dur); }
+.to-top:hover { transform: translateY(-3px); }
+
+/* =====================================================================
+   Scroll reveals
+   ===================================================================== */
+
+/* Variants beyond the base fade-up from components.css. */
+.js .reveal--left  { transform: translateX(-24px); }
+.js .reveal--right { transform: translateX(24px); }
+.js .reveal--zoom  { transform: scale(0.96); }
+.js .reveal--left.is-visible, .js .reveal--right.is-visible, .js .reveal--zoom.is-visible { transform: none; }
+
+/* Photos unveil from the bottom edge as they arrive. */
+.js .reveal-photo { clip-path: inset(18% 0 0 0 round var(--r-feature)); opacity: 0.3; transition: clip-path 1.1s var(--ease), opacity 0.8s var(--ease); }
+.js .reveal-photo.is-visible { clip-path: inset(0 0 0 0 round var(--r-feature)); opacity: 1; }
+
+/* Hero: the copy and the three tilted cards arrive in sequence. */
+.js .hero__inner > * { animation: page-in 800ms var(--ease) both; }
+.js .hero__inner > :nth-child(2) { animation-delay: 80ms; }
+.js .hero__inner > :nth-child(3) { animation-delay: 160ms; }
+.js .hero__inner > :nth-child(4) { animation-delay: 240ms; }
+.js .hero-cards > * { animation: card-in 900ms var(--ease) both; }
+.js .hero-cards > :nth-child(1) { animation-delay: 300ms; }
+.js .hero-cards > :nth-child(2) { animation-delay: 400ms; }
+.js .hero-cards > :nth-child(3) { animation-delay: 500ms; }
+@keyframes card-in { from { opacity: 0; translate: 0 40px; } to { opacity: 1; translate: 0 0; } }
+/* When the intro is playing, hold the hero until it lifts. */
+.show-intro:not(.intro-done) .hero__inner > *,
+.show-intro:not(.intro-done) .hero-cards > * { animation-play-state: paused; }
+
+/* Papercut shapes drift slightly with the scroll (set by main.js). */
+.blob { translate: 0 var(--parallax, 0px); will-change: translate; }
+
+/* =====================================================================
+   Reduced motion: keep everything, move nothing.
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .intro__glow, .intro__rays, .intro__halo, .intro__figure, .intro__sash, .intro__brand,
+    .intro__verse, .intro__bar, .intro__bar span, .intro__skip,
+    .js .hero__inner > *, .js .hero-cards > *, .intro-done main, .intro-done .site-header {
+        animation: none !important;
+    }
+    .intro__sash { stroke-dashoffset: 0; }
+    .intro.is-leaving { animation: intro-fade-only 300ms linear forwards !important; }
+    @keyframes intro-fade-only { to { opacity: 0; visibility: hidden; } }
+    .js .reveal-photo { clip-path: none; opacity: 1; }
+    .js .reveal--left, .js .reveal--right, .js .reveal--zoom { transform: none; }
+    .blob { translate: none; }
+    .btn:hover, .social-row a:hover, .to-top:hover, .time-card:hover { transform: none; }
+    .portrait:hover img, .detail-head__media:hover img, .brand:hover img, #theme-toggle:hover svg { transform: none; }
+}
+
+/* Print: no overlays. */
+@media print { .intro, .scroll-progress { display: none !important; } }
